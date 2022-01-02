@@ -1,0 +1,21 @@
+{% extends "../base.html" %}
+
+{% block page_title %}
+  {{ article.title }}
+{% endblock %}
+
+{% block body %}
+  <h1>Derniers billets</h1>
+  {% if articles %}
+      <ul>
+      {% for article in articles %}
+          <li>
+            {{ article.created|date:"d/m/Y" }}
+            <a href="{% url 'article:detail' article.id %}">{{ article.title }}</a>
+          </li>
+      {% endfor %}
+      </ul>
+  {% else %}
+      <p>No articles are available.</p>
+  {% endif %}
+{% endblock %}

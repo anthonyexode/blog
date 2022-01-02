@@ -1,0 +1,23 @@
+{% extends "../base.html" %}
+
+{% block page_title %}
+  {{ article.title }}
+{% endblock %}
+
+{% block body %}
+  <h1>{{ article.title }}</h1>
+  {{ article.content|safe }}
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ comment_form }}
+    <input type="submit" value="Poster mon commentaire" />
+  </form>
+
+  <div class="comment-list"></div>
+    {% for comment in comment_list %}
+      <div class="comment">
+        {{ comment.content }}
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

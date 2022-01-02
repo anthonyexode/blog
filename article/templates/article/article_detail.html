@@ -1,0 +1,10 @@
+{{ article }}
+<form action="" method="POST">
+  {% csrf_token %}
+  {{ comment_form }}
+  <input type="submit" value="Poster mon commentaire" />
+</form>
+
+{% for comment in comment_list %}
+  {{ comment }}
+{% endfor %}
